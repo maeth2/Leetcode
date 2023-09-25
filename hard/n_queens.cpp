@@ -28,7 +28,7 @@ using ll = long long;
         }
     }
 */
-bool recurse(int n, int r, vector<vector<bool>> dir, vector<string> pos, vector<vector<string>> &ans){
+void recurse(int n, int r, vector<vector<bool>> dir, vector<string> pos, vector<vector<string>> &ans){
     if(r == n){
         ans.push_back(pos);
         return;
