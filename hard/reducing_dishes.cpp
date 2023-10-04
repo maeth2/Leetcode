@@ -54,6 +54,19 @@ int maxSatisfaction(vector<int>& satisfaction) {
     return ans;
 }
 
+int maxSatisfaction(vector<int>& satisfaction) {
+    sort(satisfaction.begin(), satisfaction.end());
+    int n = satisfaction.size();
+    int sum = 0;
+    int ans = 0;
+    for(int i = n - 1; i >= 0; i--){
+        if(satisfaction[i] < -sum) break;
+        sum += satisfaction[i];
+        ans += sum;
+    }
+    return ans;
+}
+
 void solve(){
     int n;
     cin >> n;
