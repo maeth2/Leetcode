@@ -16,13 +16,14 @@ using ll = long long;
     is in the majority, we can pair A with a different number and at the end there will be a positive count of A left over.
     Using this knowledge, we can start by setting an arbritrary number as A. Then for every unlike number we subtract 1 to its count. 
     If the count reaches zero, that means that every A has been paired off in the subarray[i, j], where i is the first index of A and j is the current index.
-    If that is the case, we can disregard subarray[i, j] and continue onwards with A as the current index. By the end of the loop, A will be the majority in the array.
+    If that is the case, we can disregard subarray[i, j] and continue onwards with A as the next index. By the end of the loop, A will be the majority in the array.
 
     EXAMPLE:
         [5, 0, 1, 0, 0, 1, 0]
         1. [5, 0] This subarray has an equal number of 5 as other numbers, so it will not affect the final result. Set A as 1.
         2. [1, 0] This subarray is the same, set A as 0.
-        3. [0, 1, 0]. The final value for A is 0. Checking through the array 0 does appear more than n / 2 times.
+        3. [0, 1] This subarray is the same, set A as 0.
+        4. The final value for A is 0. Checking through the array 0 does appear more than n / 2 times.
 
     Looking back, we can see that every other numbers was paired off and we were left with the subarray [0, 1, 0].
     In summary, we check if each subarray has a majority number. If it does not we can remove it from results. What we have left will be the majority number.
@@ -36,22 +37,21 @@ vector<int> majorityElement(vector<int>& nums) {
     int n = nums.size();
     int c1 = 0, c2 = 0, n1 = 0, n2 = 1;
     for(int i = 0; i < n; i++){
-        if(n1 == nums[i]){
+        if(c1 == 0 && nums[i] != n2){
+            n1 = nums[i];
+            c1 = 1;
+        }else if(c2 == 0 && nums[i] != n1){
+            n2 = nums[i];
+            c2 = 1;
+        }else if(n1 == nums[i]){
             c1++;
         }else if(n2 == nums[i]){
             c2++;
-        }else if(c1 == 0){
-            n1 = nums[i];
-            c1 = 1;
-        }else if(c2 == 0){
-            n2 = nums[i];
-            c2 = 1;
         }else{
             c1--;
             c2--;
         }
     }
-    cout << n1 << ' ' << n2 << "\n";
     c1 = 0;
     c2 = 0;
     for(int i = 0; i < n; i++){
