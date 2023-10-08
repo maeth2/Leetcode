@@ -42,7 +42,6 @@ int largestRectangleArea(vector<int>& heights) {
     int index = 0;
     for(int i = 0; i <= heights.size(); i++){
         int h = (i == heights.size() ? -1 : heights[i]);
-        cout << st.size() << "\n";
         if(st.empty() || h >= heights[st.top()]){
             st.emplace(i);
         }else{
