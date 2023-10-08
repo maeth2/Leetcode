@@ -15,10 +15,10 @@ int maxDotProduct(vector<int>& nums1, vector<int>& nums2) {
     int a, b, c, d;
     for(int i = n - 1; i >= 0; i--){
         for(int j = m - 1; j >= 0; j--){
-            a = i + 1 == n ? INT_MIN : dp[i + 1][j];
-            b = j + 1 == m ? INT_MIN : dp[i][j + 1];
-            c = nums1[i] * nums2[j] + dp[i + 1][j + 1];
-            d = nums1[i] * nums2[j];
+            a = i + 1 == n ? INT_MIN : dp[i + 1][j]; //NOT USING CURRENT NUMS MOVE i BY 1
+            b = j + 1 == m ? INT_MIN : dp[i][j + 1]; //NOT USING CURRENT NUMS MOVE j BY 1
+            c = nums1[i] * nums2[j] + dp[i + 1][j + 1]; //USING CURRENT NUMS, CHECKING OTHER SUBSEQUENCES
+            d = nums1[i] * nums2[j]; //USING CURRENT NUMS, NOT CHECKING OTHER SUBSEQUENCES
             dp[i][j] = max(max(a, b), max(c, d));
         }
     }
