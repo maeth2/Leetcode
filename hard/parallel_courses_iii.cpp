@@ -31,8 +31,8 @@ using ll = long long;
 
     Using this approach, we will have to start from courses with no outgoing relations and recurse back (There may be more then 1 of these starting course).
     
-    TOPOLOGICAL APPROACH:
-    The idea for this approach remains the same, however the difference is that we calculate each point in a more bfs method.
+    TOPOLOGICAL APPROACH (Kahn's Algorithm for Topological Sort):
+    The idea for this approach remains the same, however the difference is that we will calculate each point in a more bfs method (layer by layer).
 
     To start out, we have to keep track of how many pre-requisites each course has. We will then start at courses with no pre-requisites. As explained above, we set the course
     timing as the course length. As we explore each course, we will update the parent using its timing. If the current time is greater then the parent longest pre-requisite, 
