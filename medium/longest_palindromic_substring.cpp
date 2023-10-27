@@ -8,29 +8,30 @@
 using namespace std;
 using ll = long long;
 
-string check(int i, int j, string s){
-    int l, r;
-    l = i;
-    r = j;
-    if(s[l] != s[r]) return "";
-    while(l >= 0 && r < s.length()){
-        if(s[l] != s[r]) break;
-        l--;
-        r++;
-    }
-    l++;
-    r--;
-    return s.substr(l, r - l + 1);
-}
-
 string longestPalindrome(string s) {
     string ans = "";
-    if(s.length() <= 1) return s;
-    for(int i = 0; i < s.length() - 1; i++){
-        string a = check(i, i, s);
-        string b = check(i, i + 1, s);
-        if(ans.length() < a.length()) ans = a;
-        if(ans.length() < b.length()) ans = b;
+    for(int i = 0; i < s.size(); i++){
+        int l, r;
+        for(int j = 0; j <= i; j++){
+            l = i - j;
+            r = i + j;
+            if(r == s.size() || s[l] != s[r]){
+                l++;
+                r--;
+                break;
+            }
+        }
+        if(ans.size() < (r - l + 1)) ans = s.substr(l, (r - l + 1));
+        for(int j = 0; j <= i; j++){
+            l = i - j;
+            r = i + j + 1;
+            if(r == s.size() || s[l] != s[r]){
+                l++;
+                r--;
+                break;
+            }
+        }
+        if(ans.size() < (r - l + 1)) ans = s.substr(l, (r - l + 1));
     }
     return ans;
 }
