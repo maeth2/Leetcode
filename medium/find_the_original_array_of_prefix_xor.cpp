@@ -8,6 +8,20 @@
 using namespace std;
 using ll = long long;
 
+/*
+    NOTE: To solve this problem we have to prove that if a ^ b = c, then a ^ c = b is also true.
+
+    Proof:
+    a ^ b = c
+    Xor both sides with a.
+    a ^ a ^ b = a ^ c
+    a ^ a is equal to 0.
+    0 ^ b = a ^ c
+    b ^ 0 is equal to b.
+    b = a ^ c
+    Therefore, if a ^ b = c, then a ^ c = b is also true.
+    
+*/
 vector<int> findArray(vector<int>& pref) {
     int mask = 0;
     vector<int> ans;
