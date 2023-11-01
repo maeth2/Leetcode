@@ -70,11 +70,15 @@ using ll = long long;
     We have now proven that for n number of pigs and T number of tests, we will definetly find the poisoned bucket if there less then or equal to (T + 1)^n buckets.
     
     If we were to write this into an equation it would be:
-        for every N <= (T+1)^n, a poisoned bucket can be found.
+        for every N <= (T+1)^x, a poisoned bucket can be found.
 
     However the question is asking the Minimum number of pigs. 
     
-    In the problem statement, we are given the values of T and N. That means we can simply rearrange the formula above to solve for n instead of N.
+    In the problem statement, we are given the values of T and N. That means we can simply rearrange the formula above to solve for x instead of N:
+        log(T+1)(N) <= x
+
+    We can assume that the answer of log(T+1)(N) is equal to smallest value of x that satisfies the formula.
+    We can now just plug in T and N into the formula to find the value of x.
 */
 int poorPigs(int buckets, int minutesToDie, int minutesToTest) {
     /*
