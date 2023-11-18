@@ -14,18 +14,16 @@ int maxFrequency(vector<int>& nums, int k) {
     int n = nums.size();
     long total = 0;
     int j = 0;
-    int ans = 0;
 
     for(int i = 0; i < n; i++){
         long t = nums[i]; //Prevents int overflow
         total += nums[i];
-        while(t * (i - j + 1) - total > k){
+        if(t * (i - j + 1) - total > k){
             total -= nums[j];
             j++;
         }
-        ans = max(ans, i - j + 1);
     }
-    return ans;
+    return n - j;
 }
 
 void solve(){
