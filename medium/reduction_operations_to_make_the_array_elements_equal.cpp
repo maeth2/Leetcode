@@ -14,8 +14,7 @@ int reductionOperations(vector<int>& nums) {
     int n = nums.size();
     int prev = nums[0];
     int c = 0;
-    for(int i : nums) cout << i << " ";
-    cout << "\n";
+
     for(int i = 0; i < nums.size(); i++){
         int v = nums[i];
         if(prev != v){
@@ -26,8 +25,7 @@ int reductionOperations(vector<int>& nums) {
         c++;
     }
     count.push_back(c);
-    for(int i : count) cout << i << ' ';
-    cout << "\n";
+
     int ans = 0;
     int prevTotal = 0;
     for(int i = count.size() - 1; i >= 1; i--){
