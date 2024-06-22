@@ -1,2 +1,4 @@
 
-                                {0, 0, 0},
+    int ans = 0;
+    int n = nums.size();
+    vector<int> left(n);
