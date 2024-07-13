@@ -25,6 +25,6 @@ void solve(){
 }
 
 int main(void){
-    solve();
+    solve();    
     return 1;
 }
