@@ -8,13 +8,11 @@
 using namespace std;
 using ll = long long;
 
-int binary_search(vector<int> arr, int i){
-    int l = 0;
-    int r = arr.size() - 1;
-    cout << arr.size();
+int binary_search(vector<int> arr, int i, int low, int high){
+    int l = low;
+    int r = high;
     while(l <= r){
         int m = (l + r) / 2;
-        cout << m << "\n";
         if(i >= arr[m]){
             l = m + 1;
         }else{
@@ -24,22 +22,23 @@ int binary_search(vector<int> arr, int i){
     return l;
 }
 
-vector<int> binary_sort(vector<int> arr){
+vector<int> binary_sort(vector<int> &arr){
     int n = arr.size();
-    vector<int> ans;
-    ans.push_back(arr[0]);
     for(int i = 1; i < n; i++){
-        int loc = binary_search(ans, arr[i]);
-        ans.insert(ans.begin() + loc, arr[i]);
+        int loc = binary_search(arr, arr[i], 0, i - 1);
+        int v = arr[i];
+        for(int j = i - 1; j >= loc; j--){
+            arr[j + 1] = arr[j];
+        }
+        arr[loc] = v;
     }
-    return ans;
+    return arr;
 }
 
 void solve(){
     int n;
     cin >> n;
     vector<int> arr(n);
-    cout << n << "\n";
     for(int i = 0; i < n; i++){
         cin >> arr[i];
     }
