@@ -11,11 +11,12 @@ using ll = long long;
 int binary_search(vector<int> arr, int i){
     int l = 0;
     int r = arr.size() - 1;
+    cout << arr.size();
     while(l <= r){
-        cout << l << ' ' << r << "\n";
         int m = (l + r) / 2;
+        cout << m << "\n";
         if(i >= arr[m]){
-            l = m;
+            l = m + 1;
         }else{
             r = m - 1;
         }
@@ -38,6 +39,7 @@ void solve(){
     int n;
     cin >> n;
     vector<int> arr(n);
+    cout << n << "\n";
     for(int i = 0; i < n; i++){
         cin >> arr[i];
     }
