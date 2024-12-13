@@ -8,15 +8,6 @@
 using namespace std;
 using ll = long long;
 
-template <typename T> 
-
-void print(vector<T> a){
-    for(T j : a){
-        cout << j << ' ';
-    }
-    cout << "\n";
-}
-
 long long findScore(vector<int>& nums) {
     vector<pair<int, int>> sorted;
     for(int i = 0; i < nums.size(); i++){
