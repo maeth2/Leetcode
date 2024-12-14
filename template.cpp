@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <vector>
 #include <string>
+#include <cstdint>
 
 using namespace std;
 using ll = long long;
